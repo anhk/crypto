@@ -4,6 +4,7 @@ import (
 	"crypto/cipher"
 	"fmt"
 	"github.com/anhk/crypto/aes"
+	"github.com/anhk/crypto/sm3"
 	"github.com/anhk/crypto/sm4"
 )
 
@@ -21,7 +22,7 @@ func TestAES() {
 	data := []byte("1234567890123456123456789012345612345678901234561234567890123456")
 	modeEnc := cipher.NewCBCEncrypter(block, iv)
 	modeEnc.CryptBlocks(data, data)
-	fmt.Println(data)
+	fmt.Printf("%2X\n", data)
 
 	modeDec := cipher.NewCBCDecrypter(block, iv)
 	modeDec.CryptBlocks(data, data)
@@ -37,14 +38,19 @@ func TestSM4() {
 	data := []byte("1234567890123456123456789012345612345678901234561234567890123456")
 	modeEnc := cipher.NewCBCEncrypter(block, iv)
 	modeEnc.CryptBlocks(data, data)
-	fmt.Println(data)
+	fmt.Printf("%2X\n", data)
 
 	modeDec := cipher.NewCBCDecrypter(block, iv)
 	modeDec.CryptBlocks(data, data)
 	fmt.Println(string(data))
 }
 
+func TestSM3() {
+	fmt.Printf("%2X\n", sm3.Sm3Sum([]byte("hello world.")))
+}
+
 func main() {
 	TestAES()
 	TestSM4()
+	TestSM3()
 }
