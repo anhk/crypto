@@ -16,7 +16,7 @@ func TestNew(t *testing.T) {
 
 func TestSM3_BlockSize(t *testing.T) {
 	sm3 := New()
-	if sm3.BlockSize() != 64 {
+	if sm3.BlockSize() != 16 {
 		t.Fatal("invalid blocksize")
 	}
 	if sm3.Size() != 32 {
