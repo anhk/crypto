@@ -1,6 +1,7 @@
 package sm3
 
 import (
+	"encoding/base64"
 	"fmt"
 	"strings"
 	"testing"
@@ -46,4 +47,11 @@ func TestSm3Sum2(t *testing.T) {
 	if !strings.EqualFold(result, fmt.Sprintf("%2X", Sm3Sum(data))) {
 		t.Fatal("invalid sm3")
 	}
+}
+
+func TestSm3Sum3(t *testing.T) {
+	//result := "GrIdg1XPoX+OYRlIMegajyK+yMco/vt0ftA161CCqis=";
+	data := []byte("")
+	idx := Sm3Sum(data)
+	fmt.Println(base64.StdEncoding.EncodeToString(idx[:]))
 }

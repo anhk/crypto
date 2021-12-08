@@ -85,7 +85,7 @@ func (sm3 *SM3) Reset() {
 }
 
 func (sm3 *SM3) Write(p []byte) (n int, err error) {
-	_ = p[0]
+	//_ = p[0]
 	inLen := len(p)
 
 	i := 0
